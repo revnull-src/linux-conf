@@ -1,4 +1,4 @@
 linux-conf
 ==========
 
-My Linux dot files
+My Linux dot files. Nothing to see here.
