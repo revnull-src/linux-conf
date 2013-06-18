@@ -15,7 +15,6 @@ fi
 
 # Aliases
 alias ls='ls -hF --color=auto'
-alias vi='vim'
-alias diff='colordiff'
-alias top='htop'
-
+if [ `command -v vim` ]; then alias vi='vim'; fi
+if [ `command -v colordiff` ]; then alias diff='colordiff'; fi
+if [ `command -v htop` ]; then alias top='htop'; fi
