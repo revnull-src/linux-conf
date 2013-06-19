@@ -6,11 +6,13 @@ if [ -d $HOME/bin ]; then
     export PATH
 fi
 
-if [ -f $HOME/.git-prompt.sh ]; then
+if [ -f $HOME/.git-prompt.sh ] && [ `command -v git` ]; then
     source $HOME/.git-prompt.sh
     # Bash Prompt (/w git status)
     PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
     GIT_PS1_SHOWDIRTYSTATE=1
+else
+    PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
 fi
 
 # Aliases
