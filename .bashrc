@@ -9,6 +9,10 @@ if [ -d $HOME/bin ]; then
     export PATH
 fi
 
+if [ -f $HOME/bin/filer_scripts.sh ]; then
+    source $HOME/bin/filer_scripts.sh
+fi
+
 # Adjust promt
 if [ -f $HOME/.git-prompt.sh ] && [ `command -v git` ]; then
     source $HOME/.git-prompt.sh
