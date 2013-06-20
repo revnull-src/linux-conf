@@ -19,6 +19,10 @@ if [ -f $HOME/.git-prompt.sh ] && [ `command -v git` ]; then
     # Bash Prompt (/w git status)
     PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
     GIT_PS1_SHOWDIRTYSTATE=1
+    # Set some generic git options
+    git config --global user.name "Ray Ramirez"
+    git config --global color.ui true
+    git config --global core.editor vi
 else
     PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
 fi
@@ -39,7 +43,7 @@ elif [ `command -v ssh-agent` ] && [ `command -v ssh-add` ]; then
             rm -f $HOME/.agent_${HOSTNAME}.sh
         fi;
         # start a new agent
-        echo "Starting SSH-AGENT..."
+        #echo "Starting SSH-AGENT..."
         ssh-agent | grep -v echo >&$HOME/.agent_${HOSTNAME}.sh
         test -e $HOME/.agent_${HOSTNAME}.sh && source $HOME/.agent_${HOSTNAME}.sh
         ssh-add
