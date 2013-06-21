@@ -1,19 +1,24 @@
 # .bashrc
 
+#
 # BASH Options
+#
 shopt -s checkwinsize
 
-# Add our local bin to path
-if [ -d $HOME/bin ]; then
-    PATH=$PATH:$HOME/bin
-    export PATH
-fi
 
-if [ -f $HOME/bin/filer_scripts.sh ]; then
-    source $HOME/bin/filer_scripts.sh
+#
+# Make sure we have a local bin dir and add it to PATH
+#
+if [ ! -d $HOME/bin ]; then
+    mkdir $HOME/bin
 fi
+PATH=$PATH:$HOME/bin
+export PATH
 
-# Adjust promt
+
+#
+# Adjust promt and add git goodness if available.
+#
 if [ -f $HOME/.git-prompt.sh ] && [ `command -v git` ]; then
     source $HOME/.git-prompt.sh
     # Bash Prompt (/w git status)
@@ -23,11 +28,15 @@ if [ -f $HOME/.git-prompt.sh ] && [ `command -v git` ]; then
     git config --global user.name "Ray Ramirez"
     git config --global color.ui true
     git config --global core.editor vi
+    git config --global help.autocorrect 1
 else
     PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
 fi
 
-# Set our ssh keychain or ssh-agent
+
+#
+# Setup our ssh keychain or ssh-agent
+#
 if [ -f $HOME/.ssh/id_dsa ] && [ `command -v keychain` ]; then
     eval `keychain -q --eval --agents "ssh" $HOME/.ssh/id_dsa`
     alias kc='eval `keychain --eval --agents "ssh" $HOME/.ssh/id_dsa`'
@@ -49,14 +58,25 @@ elif [ `command -v ssh-agent` ] && [ `command -v ssh-add` ]; then
         ssh-add
     fi;
     test -e $HOME/.agent_${HOSTNAME}.sh && source $HOME/.agent_${HOSTNAME}.sh
-    alias kagent="kill -9 $SSH_AGENT_PID"
+    alias kagent='kill -9 ${SSH_AGENT_PID}'
 fi
 
+
+#
 # Aliases
+#
 alias ls='ls -hF --color=auto'
 alias ssh='ssh -o ConnectTimeout=3 -o ConnectionAttempts=5 -o BatchMode=yes -o StrictHostKeyChecking=no'
 # Make sure commands exist before aliasing
 if [ `command -v vim` ]; then alias vi='vim'; fi
 if [ `command -v colordiff` ]; then alias diff='colordiff'; fi
 if [ `command -v htop` ]; then alias top='htop'; fi
+
+
+#
+# Other things
+#
+if [ -f $HOME/bin/filer_scripts.sh ]; then
+    source $HOME/bin/filer_scripts.sh
+fi
 
