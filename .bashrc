@@ -7,6 +7,13 @@ shopt -s checkwinsize
 
 
 #
+# Env Vars
+#
+EDITOR=vi
+export EDITOR
+
+
+#
 # Make sure we have a local bin dir and add it to PATH
 #
 if [ ! -d $HOME/bin ]; then
