@@ -9,7 +9,12 @@ shopt -s checkwinsize
 #
 # Env Vars
 #
-EDITOR=vi
+if [ `command -v vim` ]; then
+    alias vi='vim'
+    EDITOR=vim
+else
+    EDITOR=vi
+fi
 export EDITOR
 
 
@@ -34,7 +39,7 @@ if [ -f $HOME/.git-prompt.sh ] && [ `command -v git` ]; then
     # Set some generic git options
     git config --global user.name "Ray Ramirez"
     git config --global color.ui true
-    git config --global core.editor vi
+    git config --global core.editor $EDITOR
     git config --global help.autocorrect 1
 else
     PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
@@ -75,7 +80,6 @@ fi
 alias ls='ls -hF --color=auto'
 alias ssh='ssh -o ConnectTimeout=3 -o ConnectionAttempts=5 -o BatchMode=yes -o StrictHostKeyChecking=no'
 # Make sure commands exist before aliasing
-if [ `command -v vim` ]; then alias vi='vim'; fi
 if [ `command -v colordiff` ]; then alias diff='colordiff'; fi
 if [ `command -v htop` ]; then alias top='htop'; fi
 
