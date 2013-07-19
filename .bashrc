@@ -85,9 +85,9 @@ if [ `command -v htop` ]; then alias top='htop'; fi
 
 
 #
-# Other things
+# Add local environment
 #
-if [ -f $HOME/bin/filer_scripts.sh ]; then
-    source $HOME/bin/filer_scripts.sh
+if [ -f $HOME/.localenv.sh ]; then
+    source $HOME/.localenv.sh
 fi
 
