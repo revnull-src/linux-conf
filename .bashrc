@@ -78,7 +78,7 @@ fi
 # Aliases
 #
 alias ls='ls -hF --color=auto'
-alias rl='source ~\.bashrc'
+alias rl='source ~/.bashrc'
 #alias ssh='ssh -o ConnectTimeout=3 -o ConnectionAttempts=5 -o BatchMode=yes -o StrictHostKeyChecking=no'
 # Make sure commands exist before aliasing
 if [ `command -v colordiff` ]; then alias diff='colordiff'; fi
