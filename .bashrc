@@ -49,9 +49,9 @@ fi
 #
 # Setup our ssh keychain or ssh-agent
 #
-if [ -f $HOME/.ssh/id_dsa ] && [ `command -v keychain` ]; then
-    eval `keychain -q --eval --agents "ssh" $HOME/.ssh/id_dsa`
-    alias kc='eval `keychain --eval --agents "ssh" $HOME/.ssh/id_dsa`'
+if [ -f $HOME/.ssh/id_rsa ] && [ `command -v keychain` ]; then
+    eval `keychain -q --eval --agents "ssh" $HOME/.ssh/id_rsa`
+    alias kc='eval `keychain --eval --agents "ssh" $HOME/.ssh/id_rsa`'
     alias kclear='keychain --clear'
     alias kcstop='keychain -k mine'
     alias kcstopa='keychain -k all'
