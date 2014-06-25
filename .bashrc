@@ -47,6 +47,21 @@ fi
 
 
 #
+# If available load up screen.
+#
+if [ -f $HOME/.screenrc ] && [ `command -v screen` ]; then
+    if [ "$TERM" != "screen" ]; then
+        ScrnSession=`screen -ls | grep "(" | awk '{print $1}'`
+        if [ "$ScrnSession" = "" ]; then
+            screen
+        else
+            screen -x $ScrnSession
+        fi
+    fi
+fi
+
+
+#
 # Setup our ssh keychain or ssh-agent
 #
 if [ -f $HOME/.ssh/id_rsa ] && [ `command -v keychain` ]; then
