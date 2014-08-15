@@ -49,16 +49,16 @@ fi
 #
 # If available load up screen.
 #
-if [ -f $HOME/.screenrc ] && [ `command -v screen` ]; then
-    if [ "$TERM" != "screen" ]; then
-        ScrnSession=`screen -ls | grep "(" | awk '{print $1}'`
-        if [ "$ScrnSession" = "" ]; then
-            screen
-        else
-            screen -x $ScrnSession
-        fi
-    fi
-fi
+#if [ -f $HOME/.screenrc ] && [ `command -v screen` ]; then
+#    if [ "$TERM" != "screen" ]; then
+#        ScrnSession=`screen -ls | grep "(" | awk '{print $1}'`
+#        if [ "$ScrnSession" = "" ]; then
+#            screen
+#        else
+#            screen -x $ScrnSession
+#        fi
+#    fi
+#fi
 
 
 #
@@ -94,6 +94,7 @@ fi
 #
 alias ls='ls -hF --color=auto'
 alias rl='source ~/.bashrc'
+alias flip='FLIP=$(($(($RANDOM%10))%2));  if [ $FLIP -eq 1 ]; then echo "TAILS"; TAIL=$(($TAIL+1)); else echo "HEADS"; HEAD=$(($HEAD+1)); fi'
 #alias ssh='ssh -o ConnectTimeout=3 -o ConnectionAttempts=5 -o BatchMode=yes -o StrictHostKeyChecking=no'
 # Make sure commands exist before aliasing
 if [ `command -v colordiff` ]; then alias diff='colordiff'; fi

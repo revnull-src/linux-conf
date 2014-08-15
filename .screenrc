@@ -25,7 +25,7 @@
   multiuser off             
 
 # Change default scrollback value for new windows
-  defscrollback 1000         # default: 100
+  defscrollback 30000       # default: 100
 
 # Define the time that all windows monitored for silence should 
 # wait before displaying a message. Default 30 seconds.
@@ -147,7 +147,9 @@
 
 
 # syntax: screen -t label order command
+  screen 0
   screen 1
   screen 2
-  screen -t perfstat 0
+  screen 3
+  screen 4
 
