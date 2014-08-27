@@ -17,6 +17,12 @@ else
 fi
 export EDITOR
 
+#
+# Use all the colors
+#
+TERM=xterm-256color
+export TERM
+
 
 #
 # Make sure we have a local bin dir and add it to PATH
