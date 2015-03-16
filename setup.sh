@@ -9,6 +9,8 @@ ln -s -f ~/conf/.git-prompt.sh ~/
 
 # Because I'm old
 ln -s -f ~/conf/.screenrc ~/
+# Lets see what the kids are using
+ln -s -f ~/conf/.tmux.conf ~/
 
 # Setup vim
 ln -s -f ~/conf/.vimrc ~/
