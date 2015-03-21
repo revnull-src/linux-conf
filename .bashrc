@@ -5,7 +5,6 @@
 #
 shopt -s checkwinsize
 
-
 #
 # Env Vars
 #
@@ -22,7 +21,6 @@ export EDITOR
 #
 TERM=xterm-256color
 export TERM
-
 
 #
 # Make sure we have a local bin dir and add it to PATH
@@ -51,7 +49,6 @@ else
     PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
 fi
 
-
 #
 # If available load up screen.
 #
@@ -66,6 +63,13 @@ fi
 #    fi
 #fi
 
+#settitle() {
+#    printf "\033k$1\033\\"
+#    }
+#    bash_prompt_command() {
+#    settitle "`hostname -s`:$PWD"
+#    }
+#PROMPT_COMMAND=bash_prompt_command
 
 #
 # Setup our ssh keychain or ssh-agent
@@ -94,7 +98,6 @@ elif [ `command -v ssh-agent` ] && [ `command -v ssh-add` ]; then
     alias kagent='kill -9 ${SSH_AGENT_PID}'
 fi
 
-
 #
 # Aliases
 #
@@ -105,7 +108,6 @@ alias flip='FLIP=$(($(($RANDOM%10))%2));  if [ $FLIP -eq 1 ]; then echo "TAILS";
 # Make sure commands exist before aliasing
 if [ `command -v colordiff` ]; then alias diff='colordiff'; fi
 if [ `command -v htop` ]; then alias top='htop'; fi
-
 
 #
 # Add local environment
