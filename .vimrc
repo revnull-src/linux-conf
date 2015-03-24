@@ -132,7 +132,7 @@ set tm=500
 syntax enable
 
 try
-    colorscheme delek
+    colorscheme twilight256
 catch
 endtry
 

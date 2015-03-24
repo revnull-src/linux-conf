@@ -24,7 +24,7 @@ ln -s -f ~/conf/.vimrc ~/
 if [ ! -d "~/.vim/colors/" ]; then
     mkdir -p ~/.vim/colors/
 fi
-ln -s -f ~/conf/twilight.vim ~/.vim/colors/twilight.vim
+ln -s -f ~/conf/twilight256.vim ~/.vim/colors/twilight256.vim
 
 # Create the local host env
 touch ~/.localenv.sh
