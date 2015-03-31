@@ -1,13 +1,9 @@
 # .bashrc
 
-#
 # BASH Options
-#
 shopt -s checkwinsize
 
-#
 # Env Vars
-#
 if [ `command -v vim` ]; then
     alias vi='vim'
     EDITOR=vim
@@ -16,25 +12,18 @@ else
 fi
 export EDITOR
 
-#
 # Use all the colors
-#
 TERM=xterm-256color
 export TERM
 
-#
 # Make sure we have a local bin dir and add it to PATH
-#
 if [ ! -d $HOME/bin ]; then
     mkdir $HOME/bin
 fi
 PATH=$PATH:$HOME/bin
 export PATH
 
-
-#
 # Adjust promt and add git goodness if available.
-#
 if [ -f $HOME/.git-prompt.sh ] && [ `command -v git` ]; then
     source $HOME/.git-prompt.sh
     source $HOME/.git-completion.bash
@@ -50,31 +39,7 @@ else
     PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
 fi
 
-#
-# If available load up screen.
-#
-#if [ -f $HOME/.screenrc ] && [ `command -v screen` ]; then
-#    if [ "$TERM" != "screen" ]; then
-#        ScrnSession=`screen -ls | grep "(" | awk '{print $1}'`
-#        if [ "$ScrnSession" = "" ]; then
-#            screen
-#        else
-#            screen -x $ScrnSession
-#        fi
-#    fi
-#fi
-
-#settitle() {
-#    printf "\033k$1\033\\"
-#    }
-#    bash_prompt_command() {
-#    settitle "`hostname -s`:$PWD"
-#    }
-#PROMPT_COMMAND=bash_prompt_command
-
-#
 # Setup our ssh keychain or ssh-agent
-#
 if [ -f $HOME/.ssh/id_rsa ] && [ `command -v keychain` ]; then
     eval `keychain -q --eval --agents "ssh" $HOME/.ssh/id_rsa`
     alias kc='eval `keychain --eval --agents "ssh" $HOME/.ssh/id_rsa`'
@@ -99,21 +64,16 @@ elif [ `command -v ssh-agent` ] && [ `command -v ssh-add` ]; then
     alias kagent='kill -9 ${SSH_AGENT_PID}'
 fi
 
-#
 # Aliases
-#
 alias ls='ls -hF --color=auto'
 alias rl='source ~/.bashrc'
-alias flip='FLIP=$(($(($RANDOM%10))%2));  if [ $FLIP -eq 1 ]; then echo "TAILS"; TAIL=$(($TAIL+1)); else echo "HEADS"; HEAD=$(($HEAD+1)); fi'
-#alias ssh='ssh -o ConnectTimeout=3 -o ConnectionAttempts=5 -o BatchMode=yes -o StrictHostKeyChecking=no'
+alias flip='FLIP=$(($(($RANDOM%10))%2)); if [ $FLIP -eq 1 ]; then echo "TAILS"; TAIL=$(($TAIL+1)); else echo "HEADS"; HEAD=$(($HEAD+1)); fi'
 # Make sure commands exist before aliasing
 if [ `command -v colordiff` ]; then alias diff='colordiff'; fi
 if [ `command -v htop` ]; then alias top='htop'; fi
 
-#
 # Add local environment
-#
 if [ -f $HOME/.localenv.sh ]; then
-    source $HOME/.localenv.sh
+    . $HOME/.localenv.sh
 fi
 
