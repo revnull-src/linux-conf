@@ -28,7 +28,7 @@ if [ -f $HOME/.git-prompt.sh ] && [ `command -v git` ]; then
     source $HOME/.git-prompt.sh
     source $HOME/.git-completion.bash
     # Bash Prompt (/w git status)
-    PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+    PS1='[\[\e[32m\]\u@\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]]\[\e[1;33m\]$(__git_ps1)\[\e[m\] \\$ '
     GIT_PS1_SHOWDIRTYSTATE=1
     # Set some generic git options
     git config --global user.name "Ray Ramirez"
@@ -36,7 +36,7 @@ if [ -f $HOME/.git-prompt.sh ] && [ `command -v git` ]; then
     git config --global core.editor $EDITOR
     git config --global help.autocorrect 1
 else
-    PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
+    PS1='[\[\e[32m\]\u@\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]]\[\e[1;33m\]\[\e[m\] \\$ '
 fi
 
 # Setup our ssh keychain or ssh-agent
