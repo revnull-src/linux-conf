@@ -4,24 +4,34 @@
 shopt -s checkwinsize
 
 # Env Vars
+export LANG=en_US.UTF-8
+
+# Add colors to man pages with 'less'
+export MANPAGER="less"
+export LESS_TERMCAP_md=$'\e[01;34m';
+export LESS_TERMCAP_mb=$'\e[00;34m';
+export LESS_TERMCAP_me=$'\e[00;00m';
+export LESS_TERMCAP_se=$'\e[00;00m';
+export LESS_TERMCAP_so=$'\e[01;31m';
+export LESS_TERMCAP_ue=$'\e[00;00m';
+export LESS_TERMCAP_us=$'\e[01;32m';
+
+# I like vim
 if [ `command -v vim` ]; then
     alias vi='vim'
-    EDITOR=vim
+    export EDITOR=vim
 else
-    EDITOR=vi
+    export EDITOR=vi
 fi
-export EDITOR
 
 # Use all the colors
-TERM=xterm-256color
-export TERM
+export TERM=xterm-256color
 
 # Make sure we have a local bin dir and add it to PATH
 if [ ! -d $HOME/bin ]; then
     mkdir $HOME/bin
 fi
-PATH=$PATH:$HOME/bin
-export PATH
+export PATH=$PATH:$HOME/bin
 
 # Adjust promt and add git goodness if available.
 if [ -f $HOME/.git-prompt.sh ] && [ `command -v git` ]; then
@@ -66,6 +76,9 @@ fi
 
 # Aliases
 alias ls='ls -hF --color=auto'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 alias rl='source ~/.bashrc'
 alias flip='FLIP=$(($(($RANDOM%10))%2)); if [ $FLIP -eq 1 ]; then echo "TAILS"; TAIL=$(($TAIL+1)); else echo "HEADS"; HEAD=$(($HEAD+1)); fi'
 # Make sure commands exist before aliasing
