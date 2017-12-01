@@ -9,9 +9,9 @@ https://raw.githubusercontent.com/vim-scripts/twilight256.vim/master/colors/twil
 
 for list in $curlThese
 do
-    url=`echo $list | cut -d'|' -f1`
-    file=`echo $list | cut -d'|' -f2`
-    exe=`echo $list | cut -d'|' -f3`
+    url=$(echo $list | cut -d'|' -f1)
+    file=$(echo $list | cut -d'|' -f2)
+    exe=$(echo $list | cut -d'|' -f3)
 
     echo Downloading $file
     curl -# -o $file $url

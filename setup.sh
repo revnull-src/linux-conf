@@ -1,24 +1,24 @@
 #!/bin/bash
 
 # All the bash goodness
-ln -s -f ~/conf/.bash_profile ~/
-ln -s -f ~/conf/.bashrc ~/
+ln -s -f $HOME/conf/.bash_profile $HOME
+ln -s -f $HOME/conf/.bashrc $HOME
 
 # Gitify my prompt
-ln -s -f ~/conf/.git-prompt.sh ~/
-ln -s -f ~/conf/.git-completion.bash ~/
+ln -s -f $HOME/conf/.git-prompt.sh $HOME
+ln -s -f $HOME/conf/.git-completion.bash $HOME
 
 # Because I'm old
-ln -s -f ~/conf/.screenrc ~/
+ln -s -f $HOME/conf/.screenrc $HOME
 # Lets see what the kids are using
-ln -s -f ~/conf/.tmux.conf ~/
+ln -s -f $HOME/conf/.tmux.conf $HOME
 
 # Setup vim
-ln -s -f ~/conf/.vimrc ~/
-if [ ! -d "~/.vim/colors/" ]; then
-    mkdir -p ~/.vim/colors/
+ln -s -f $HOME/conf/.vimrc $HOME
+if [ ! -d "$HOME/.vim/colors/" ]; then
+    mkdir -p $HOME/.vim/colors/
 fi
-ln -s -f ~/conf/twilight256.vim ~/.vim/colors/twilight256.vim
+ln -s -f $HOME/conf/twilight256.vim $HOME/.vim/colors/twilight256.vim
 
 # Create the local host env
-touch ~/.localenv.sh
+touch $HOME/.localenv.sh
