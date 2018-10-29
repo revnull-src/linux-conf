@@ -8,10 +8,12 @@ ln -s -f $HOME/conf/.bashrc $HOME
 ln -s -f $HOME/conf/.git-prompt.sh $HOME
 ln -s -f $HOME/conf/.git-completion.bash $HOME
 
-# Because I'm old
-ln -s -f $HOME/conf/.screenrc $HOME
-# Lets see what the kids are using
+# Setup tmux
 ln -s -f $HOME/conf/.tmux.conf $HOME
+# Install tmux plugin manager
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 
 # Setup vim
 ln -s -f $HOME/conf/.vimrc $HOME
