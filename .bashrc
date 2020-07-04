@@ -91,3 +91,5 @@ if [ -f $HOME/.localenv.sh ]; then
     . $HOME/.localenv.sh
 fi
 
+export DOCKER_HOST=tcp://localhost:2375
+
