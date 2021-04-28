@@ -8,6 +8,9 @@ ln -s -f $HOME/conf/.bashrc $HOME
 ln -s -f $HOME/conf/.git-prompt.sh $HOME
 ln -s -f $HOME/conf/.git-completion.bash $HOME
 
+# K8S autocomplete
+ln -s -f $HOME/conf/.kubectl-completion.bash $HOME
+
 # Setup tmux
 ln -s -f $HOME/conf/.tmux.conf $HOME
 # Install tmux plugin manager
