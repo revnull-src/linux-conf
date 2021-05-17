@@ -38,15 +38,17 @@ if [ -f $HOME/.git-prompt.sh ] && [ $(command -v git) ]; then
   source $HOME/.git-prompt.sh
   source $HOME/.git-completion.bash
   # Bash Prompt (/w git status)
-  PS1='[\[\e[1;32m\]\u@\h\[\e[m\]:\[\e[1;36m\]\w\[\e[m\]]\[\e[1;33m\]$(__git_ps1)\[\e[m\] \\$ '
-  GIT_PS1_SHOWDIRTYSTATE=1
+  export GIT_PS1_SHOWCOLORHINTS=true
+  export GIT_PS1_SHOWDIRTYSTATE=true
+  export PROMPT_COMMAND='__git_ps1 "[\[\e[1;32m\]\u@\h\[\e[m\]:\[\e[1;36m\]\w\[\e[m\]]" " \\\$ "'
   # Set some generic git options
   git config --global user.name 'Ray Ramirez'
   git config --global color.ui true
   git config --global core.editor $EDITOR
   git config --global help.autocorrect 1
+  git config --global core.autocrlf false
 else
-  PS1='[\[\e[1;32m\]\u@\h\[\e[m\]:\[\e[1;36m\]\w\[\e[m\]] \\$ '
+  export PS1='[\[\e[1;32m\]\u@\h\[\e[m\]:\[\e[1;36m\]\w\[\e[m\]] \\$ '
 fi
 
 # Setup ssh keychain or ssh-agent
@@ -99,4 +101,4 @@ if [ -f $HOME/.localenv.sh ]; then
 fi
 
 PATH="$HOME/.local/bin:$PATH"
-PATH="$HOME/.local/bin:$PATH"
+
